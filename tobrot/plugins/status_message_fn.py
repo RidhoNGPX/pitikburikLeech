@@ -55,7 +55,7 @@ async def status_message_f(
     # Show All Downloads
     to_edit = await message.reply(".......")
     chat_id = int(message.chat.id)
-    mess_id = int(to_edit.message_id)
+    mess_id = int(to_edit.message.id)
     async with _lock:
         if len(gid_dict[chat_id]) == 0:
             gid_dict[chat_id].append(mess_id)
@@ -65,7 +65,7 @@ async def status_message_f(
                 gid_dict[chat_id].pop()
                 gid_dict[chat_id].append(mess_id)
 
-    prev_mess = "By gautamajay52"
+    prev_mess = "By @OdierBambi"
     await message.delete()
     while True:
         downloads = aria_i_p.get_downloads()
@@ -169,9 +169,9 @@ async def exec_message_f(client, message):
         PROCESS_RUN_TIME = 100
         cmd = message.text.split(" ", maxsplit=1)[1]
 
-        reply_to_id = message.message_id
+        reply_to_id = message.message.id
         if message.reply_to_message:
-            reply_to_id = message.reply_to_message.message_id
+            reply_to_id = message.reply_to_message.message.id
 
         start_time = time.time() + PROCESS_RUN_TIME
         process = await asyncio.create_subprocess_shell(
