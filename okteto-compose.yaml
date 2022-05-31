@@ -1,0 +1,6 @@
+version: "3.10"
+services:
+  worker:
+    build: .
+    environment:
+      - CONFIG_FILE_URL=${CONFIG_FILE_URL}
